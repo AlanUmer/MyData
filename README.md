@@ -12,6 +12,7 @@ import React, {
 import {
   StyleSheet,
   Dimensions,
+  Platform,
   View,
   Text,
   ListView,
@@ -190,7 +191,7 @@ export default class ModalDropdown extends Component {
                                     disabled={!this.state.showDropdown}
                                     onPress={this._onModalPress.bind(this)}>
             <View style={styles.modal}>
-              <View style={[styles.dropdown, this.props.dropdownStyle, frameStyle]}>
+              <View style={[styles.dropdown, this.props.dropdownStyle, frameStyle, {marginTop: Platform.OS === 'android' ? -30 : 0}]}>
                 {this.state.loading ? this._renderLoading() : this._renderDropdown()}
               </View>
             </View>
